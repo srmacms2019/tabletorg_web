@@ -20,7 +20,4 @@ app.get('/register',function(req,res){
 app.get('/profile',function(req,res){
   res.render('pages/profile')
 })
-app.get('/cards',function(req,res){
-  res.render('pages/cards')
-})
 app.listen(2017)
