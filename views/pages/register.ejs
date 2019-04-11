@@ -9,7 +9,19 @@
     <!-- BEGIN: VENDOR CSS-->
     <link rel="stylesheet" type="text/css" href="vendor/vendor.min.css">
     <!-- END: VENDOR CSS-->
-
+    <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyCcz0MZBDDTfxcqrcDXm4K4QFu8Q2tbSUo",
+        authDomain: "acms-a830e.firebaseapp.com",
+        databaseURL: "https://acms-a830e.firebaseio.com",
+        projectId: "acms-a830e",
+        storageBucket: "acms-a830e.appspot.com",
+        messagingSenderId: "139851775916"
+      };
+      firebase.initializeApp(config);
+    </script>
     <link href="css/materialize_icons.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/css/materialize.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -69,11 +81,11 @@
                </div>
              </div>
 				      <div class="row col s12 center">
-				          <a href="index.html" class="btn waves-effect waves-light border-round" id="login-btn">signup</a>
+				          <a href="http://localhost:2017/profile" class="btn waves-effect waves-light border-round" id="login-btn">signup</a>
 				      </div>
 				      <div class="row">
 				        <div class="input-field col s12 center-align">
-				          <p class="margin medium-small"><a href="user-register.html">Already have an acoount ?  Login</a></p>
+				          <p class="margin medium-small"><a href="http://localhost:2017/login">Already have an acoount ?  Login</a></p>
 				        </div>
 				      </div>
 				    </form>

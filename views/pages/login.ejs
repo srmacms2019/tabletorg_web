@@ -12,6 +12,19 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/login.css">
     <script src="js/jquery.min.js" type="text/javascript"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyCcz0MZBDDTfxcqrcDXm4K4QFu8Q2tbSUo",
+        authDomain: "acms-a830e.firebaseapp.com",
+        databaseURL: "https://acms-a830e.firebaseio.com",
+        projectId: "acms-a830e",
+        storageBucket: "acms-a830e.appspot.com",
+        messagingSenderId: "139851775916"
+      };
+      firebase.initializeApp(config);
+    </script>
   </head>
   <!-- END: Head-->
   <body class="vertical-layout vertical-menu-collapsible page-header-dark vertical-modern-menu 1-column login-bg  blank-page blank-page" data-open="click" data-menu="vertical-modern-menu" data-col="1-column" style="background-image: url('images/login_bg.jpg');">
@@ -44,15 +57,20 @@
 				          <label for="password">Password</label>
 				        </div>
 				      </div>
-				      <div class="row col s12 center">
-				          <a href="index.html" class="btn waves-effect waves-light border-round" id="login-btn">Login</a>
+              <div class="row">
+				        <div class="input-field col s6 m6 l6 center">
+				         <a href="http://localhost:2017/profile" class="btn waves-effect waves-light btn-large" id="login-btn">Login</a>
+				        </div>
+				        <div class="input-field col s6 m6 l6 center">
+				          <a id="googleauth" class="waves-effect waves-light btn-large"><img style="margin-top:15px;margin-right:15px" width="25px" height ="25px" src="images/google.png"/>Sign in</a>
+				        </div>
 				      </div>
 				      <div class="row">
 				        <div class="input-field col s6 m6 l6">
-				          <p class="margin medium-small"><a href="user-register.html">Register Now!</a></p>
+				          <p class="margin medium-small"><a href="http://localhost:2017/register">Register Now!</a></p>
 				        </div>
 				        <div class="input-field col s6 m6 l6">
-				          <p class="margin right-align medium-small"><a href="user-forgot-password.html">Forgot password ?</a></p>
+				          <p class="margin right-align medium-small"><a href="http://localhost:2017/forgotpassword">Forgot password ?</a></p>
 				        </div>
 				      </div>
 				    </form>
@@ -62,7 +80,24 @@
         </div>
       </div>
     </div>
-
+    <script>
+      $(document).ready(function(){
+        $("#googleauth").click(function(){
+          var googleAuthProvider = new firebase.auth.GoogleAuthProvider();;
+          firebase.auth().signInWithPopup(googleAuthProvider).then(function(result) {
+             // This gives you a Google Access Token.
+             var token = result.credential.accessToken;
+             //console.log(result)
+             // The signed-in user info.
+             var user = result.user;
+             window.location = 'http://localhost:2017/profile';
+            })
+            .catch(function(error){
+              console.log(error);
+            })
+        })
+      })
+    </script>
     <script src="js/typed.min.js" type="text/javascript"></script>
     <script>var typed = new Typed('.welcome', { strings: ["Welcome", "नमस्ते", "வணக்கம்", "Bonjour"], typeSpeed: 30, backSpeed: 30, loop: true }); </script>
     <script src="vendor/vendor.min.js" type="text/javascript"></script>
