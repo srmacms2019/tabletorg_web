@@ -15,7 +15,9 @@ body{
 {
     border-radius: 10px;
 }
-
+.fol-right{
+  float:right;
+}
 #user-profile .photo-border
 {
     border-radius: 6px;

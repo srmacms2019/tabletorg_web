@@ -40,6 +40,9 @@ app.get('/register',function(req,res){
 app.post('/register',function(req,res){
 
 })
+app.get('/home',function(req,res){
+  res.render('pages/home')
+})
 app.get('/profile',function(req,res){
   res.render('pages/profile')
 })

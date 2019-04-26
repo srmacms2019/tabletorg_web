@@ -9311,8 +9311,8 @@ nav.display-none.search-sm .nav-wrapper form .input-field input.search-box-sm:no
   font-size: 12px;
 }
 .btn-follow{
-  width:120px;
   height:35px;
+  border-radius: 50%;
 }
 .input-field div.error
 {

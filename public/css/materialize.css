@@ -3871,15 +3871,11 @@ th
 
     margin: 0;
     padding: 10px 20px;
-
-    border-bottom: 1px solid #e0e0e0;
     background-color: #fff;
 }
 .collection .collection-item.avatar
 {
     position: relative;
-
-    min-height: 84px;
     padding-left: 72px;
 }
 .collection .collection-item.avatar:not(.circle-clipper) > .circle,
@@ -6174,7 +6170,7 @@ small
 }
 .card .card-content
 {
-    padding: 24px;
+    padding: 10px;
 
     border-radius: 0 0 2px 2px;
 }
@@ -6200,7 +6196,6 @@ small
 
     padding: 16px 24px;
 
-    border-top: 1px solid rgba(160, 160, 160, .2);
     background-color: inherit;
 }
 .card .card-action:last-child
