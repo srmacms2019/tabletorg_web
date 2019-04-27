@@ -79,3 +79,29 @@ body{
         margin-top: 1rem;
     }
 }
+#tweet-input-out{
+  border : 2px solid #2196f3;
+  border-radius: 20px;
+  margin-left:20px;
+  margin-right: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+}
+ #tweet-input{
+  float: right;
+}
+#tweet-icons{
+  display: flex;
+}
+#tweet-icon{
+  display: flex;
+}
+.file-btn{
+  border-radius: 100%;
+  min-width:10px;
+  min-height:10px;
+  width:10px;
+  height:10px;
+  text-align: center;
+}
