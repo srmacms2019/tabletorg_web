@@ -27,6 +27,12 @@ $( document ).ready(function() {
             //alert(data.users.length);
             console.log("success");
             console.log(data)
+            if(data.success){
+              document.cookie="uid="+data.user.uid
+              var customToken=data.user.customToken
+              window.location.href="http://localhost:2017/login"
+            }
+            //window.location.href="http://localhost:2017/home"
           },
           error: function(jqXHR, error) {
             alert(jqXHR.status + "   " + JSON.stringify(jqXHR.responseText));

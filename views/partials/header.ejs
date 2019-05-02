@@ -1,10 +1,88 @@
-<head>
-	<title>home</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <link rel="stylesheet" href="css/index.css">
-</head>
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+  <!-- BEGIN: Head-->
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <title>Tablet org</title>
+    <link rel="stylesheet" type="text/css" href="vendor/vendor.min.css">
+    <link href="css/materialize_icons.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/materialize.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/style_horizontal.css">
+    <link rel="stylesheet" type="text/css" href="css/user_profile.css">
+    <link rel="stylesheet" type="text/css" href="css/dropify.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+
+  </head>
+  <!-- END: Head-->
+  <body class="horizontal-layout page-header-light horizontal-menu 2-columns  " data-open="click" data-menu="horizontal-menu" data-col="2-columns">
+
+    <!-- BEGIN: Header-->
+<header class="page-topbar" id="header">
+	<div class="navbar navbar-fixed">
+		<nav class="navbar-main navbar-color  navbar-dark gradient-45deg-light-blue-cyan">
+			<div class="nav-wrapper">
+				<ul class="left">
+					<li>
+						<h1 class="logo-wrapper"><a class="brand-logo darken-1" href="index.html"><img src="images/amazon_logo.png"></a></h1>
+					</li>
+				</ul>
+				<div class="header-search-wrapper hide-on-med-and-down"><i class="material-icons">search</i>
+					<input class="header-search-input z-depth-2" type="text" name="Search" placeholder="Search">
+				</div>
+				<ul class="navbar-list right">
+					<li class="hide-on-large-only"><a class="waves-effect waves-block waves-light search-button" href="javascript:void(0);"><i class="material-icons">search  </i></a></li>
+					<li><a class="waves-effect waves-block waves-light notification-button" href="javascript:void(0);" data-target="notifications-dropdown"><i class="material-icons">notifications_none<small class="notification-badge red accent-3">5</small></i></a></li>
+					<li><a class="waves-effect waves-block waves-light profile-button" href="javascript:void(0);" data-target="profile-dropdown"><span class="avatar-status avatar-online"><img src="images/nithika.png"><i></i></span></a></li>
+					<li><a class="waves-effect waves-block waves-light sidenav-trigger" href="#" data-target="slide-out-right"><i class="material-icons">format_indent_increase</i></a></li>
+				</ul>
+				<!-- translation-button-->
+				<!-- notifications-dropdown-->
+				<ul class="dropdown-content" id="notifications-dropdown">
+					<li>
+						<h6>NOTIFICATIONS<span class="new badge">5</span></h6>
+					</li>
+					<li class="divider"></li>
+					<li><a class="grey-text text-darken-2" href="#!"><span class="material-icons icon-bg-circle cyan small">add_shopping_cart</span> A new order has been placed!</a>
+						<time class="media-meta" datetime="2015-06-12T20:50:48+08:00">2 hours ago</time>
+					</li>
+					<li><a class="grey-text text-darken-2" href="#!"><span class="material-icons icon-bg-circle red small">stars</span> Completed the task</a>
+						<time class="media-meta" datetime="2015-06-12T20:50:48+08:00">3 days ago</time>
+					</li>
+					<li><a class="grey-text text-darken-2" href="#!"><span class="material-icons icon-bg-circle teal small">settings</span> Settings updated</a>
+						<time class="media-meta" datetime="2015-06-12T20:50:48+08:00">4 days ago</time>
+					</li>
+					<li><a class="grey-text text-darken-2" href="#!"><span class="material-icons icon-bg-circle deep-orange small">today</span> Director meeting started</a>
+						<time class="media-meta" datetime="2015-06-12T20:50:48+08:00">6 days ago</time>
+					</li>
+					<li><a class="grey-text text-darken-2" href="#!"><span class="material-icons icon-bg-circle amber small">trending_up</span> Generate monthly report</a>
+						<time class="media-meta" datetime="2015-06-12T20:50:48+08:00">1 week ago</time>
+					</li>
+				</ul>
+				<!-- profile-dropdown-->
+				<ul class="dropdown-content" id="profile-dropdown">
+					<li><a class="grey-text text-darken-1" href="user-profile-page.html"><i class="material-icons">person_outline</i> Profile</a></li>
+					<li><a class="grey-text text-darken-1" href="app-chat.html"><i class="material-icons">chat_bubble_outline</i> Chat</a></li>
+					<li><a class="grey-text text-darken-1" href="page-faq.html"><i class="material-icons">help_outline</i> Help</a></li>
+					<li class="divider"></li>
+					<li><a class="grey-text text-darken-1" href="user-lock-screen.html"><i class="material-icons">lock_outline</i> Lock</a></li>
+					<li><a id="logout" class="grey-text text-darken-1" href="user-login.html"><i class="material-icons">keyboard_tab</i> Logout</a></li>
+				</ul>
+			</div>
+			<nav class="display-none search-sm">
+				<div class="nav-wrapper">
+					<form>
+						<div class="input-field">
+							<input class="search-box-sm" type="search" required="">
+							<label class="label-icon" for="search"><i class="material-icons search-sm-icon">search</i></label><i class="material-icons search-sm-close">close</i>
+						</div>
+					</form>
+				</div>
+			</nav>
+		</nav>
+	</div>
+</header>

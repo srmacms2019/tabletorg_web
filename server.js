@@ -5,7 +5,7 @@ var bodyParser            = require('body-parser');
 var ejs                   = require('ejs');
 var cookieParser = require('cookie-parser')
 var create_user = require('./server/createUser.js')
-
+var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest
 var firebase = require("firebase");
 var admin = require('firebase-admin')
 var serviceAccount = require("./acms-a830e-firebase-adminsdk-xu4qj-edd502b7a4.json");
@@ -23,11 +23,11 @@ var db = admin.firestore()
 const auth = admin.auth()
 
 var isAuthenticated = function(req,res,next){
-  console.log(req.cookies)
+  //console.log(req.cookies)
   if(req.cookies.uid && req.cookies.idToken){
     admin.auth().verifyIdToken(req.cookies.idToken)
     .then(function(decodedToken) {
-      console.log("decoded token = "+JSON.stringify(decodedToken)+"\ncookietoken = "+req.cookies.idToken)
+      //console.log("decoded token = "+JSON.stringify(decodedToken)+"\ncookietoken = "+req.cookies.idToken)
       if(decodedToken.uid===req.cookies.uid){
         return next();
       }
@@ -42,8 +42,56 @@ var isAuthenticated = function(req,res,next){
   }
 }
 
+app.post('/updateuserdata',isAuthenticated,function(req,res,next){
+  var uid=req.cookies.uid
+  var docRef = db.collection("users").doc(uid);
+  return docRef.update({
+    "name":req.body.name,
+    "username":req.body.username,
+    "dob":req.body.dob,
+    "designation":req.body.designation
+  })
+  .then(function() {
+      console.log("Document successfully updated!");
+      res.status(200).send("success")
+  })
+  .catch(function(error) {
+      console.error("Error updating document: ", error);
+      res.status(500).send(error)
+  });
+})
 
+app.post('/updatecoverpic',isAuthenticated,function(req,res,next){
+  var uid=req.cookies.uid
+  var docRef = db.collection("users").doc(uid);
+  return docRef.update({
+    "coverpicurl":req.body.url
+  })
+  .then(function() {
+      console.log("Document successfully updated!");
+      res.status(200).send("success")
+  })
+  .catch(function(error) {
+      console.error("Error updating document: ", error);
+      res.status(500).send(error)
+  });
+})
 
+app.post('/updateprofilepic',isAuthenticated,function(req,res,next){
+  var uid=req.cookies.uid
+  var docRef = db.collection("users").doc(uid);
+  return docRef.update({
+    "profilepicurl":req.body.url
+  })
+  .then(function() {
+      console.log("Document successfully updated!");
+      res.status(200).send("success")
+  })
+  .catch(function(error) {
+      console.error("Error updating document: ", error);
+      res.status(500).send(error)
+  });
+})
 app.get('/login',function(req,res){
   res.render('pages/login');
 })
@@ -53,7 +101,7 @@ app.get('/register',function(req,res){
 })
 
 app.post('/register',function(req,res,err){
-  create_user(admin,req,res,err,db)
+  create_user(admin,req,res,err,db,XMLHttpRequest)
 })
 app.get('/home',isAuthenticated,function(req,res,err){
   // console.log(req.cookies)
@@ -79,11 +127,14 @@ app.get('/home',isAuthenticated,function(req,res,err){
 app.get('/profile',isAuthenticated,function(req,res,err){
   res.render('pages/profile')
 })
+app.get('/editProfile',isAuthenticated,function(req,res,err){
+  res.render('pages/editProfile')
+})
 app.post('/createpost',isAuthenticated,function(req,res,err){
   db.collection("posts").add({
     type: req.body.type,
     text: req.body.text,
-    image: req.body.image,
+    media: req.body.media,
     user: req.cookies.uid,
     created:admin.firestore.Timestamp.now()._seconds
   })
