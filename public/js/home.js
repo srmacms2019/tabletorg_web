@@ -6,6 +6,31 @@ $('document').ready(function (){
     $('.modal').modal();
   });
 
+    $.ajax({
+
+      url: 'http://localhost:2017/activationList',
+      type: 'GET',
+      crossDomain: true,
+      xhrFields: {
+        withCredentials: true
+      },
+      success: function(data){
+        console.log(data);
+        var i=0;
+        if(data.is_success==="true"){
+          data.activationList.forEach(function(email) {
+            console.log(email)
+            $("#notifications-dropdown").append('<li><div class="row"><div class="col s8"><p id="et'+i+'" class="font-weight-600 mt-1">'+email+'</p></div><div class="col s3 center-align mr-2"><a id=ei"'+i+'" class="btn-floating mt-1 btn-medium waves-effect waves-light"><i class="material-icons">check</i></a></div><div class="col s1"></div></div></li>');
+            i++;
+          });
+        }
+        console.log("success");
+      },
+      error: function(jqXHR, error) {
+        alert(jqXHR.status + "   " + JSON.stringify(jqXHR.responseText));
+      }
+    });
+
   $("#imageUpload").change(function() {
     if (this.files && this.files[0]) {
         imgfile=this.files[0];

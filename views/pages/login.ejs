@@ -107,7 +107,7 @@
 
              .then(function(firebaseUser) {
                  console.log("success "+ firebaseUser.user.uid)
-
+                  
                  document.cookie = "uid="+firebaseUser.user.uid;
                  auth.currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
                    console.log(idToken)

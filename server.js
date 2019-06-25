@@ -22,6 +22,35 @@ app.use(bodyParser.urlencoded({extended:true}));
 var db = admin.firestore()
 const auth = admin.auth()
 
+var isAuthenticatedAdmin = function(req,res,next){
+  //console.log(req.cookies)
+  if(req.cookies.uid && req.cookies.idToken){
+    admin.auth().verifyIdToken(req.cookies.idToken)
+    .then(function(decodedToken) {
+      //console.log("decoded token = "+JSON.stringify(decodedToken)+"\ncookietoken = "+req.cookies.idToken)
+      if(decodedToken.uid===req.cookies.uid){
+        var docRef = db.collection("users").doc(req.cookies.uid)
+        docRef.get().then(function(doc) {
+            if (doc.exists && doc.data().acc_type==='admin') {
+              return next();
+            }
+            else{
+              res.status(401).send('you are not authorized to activate accounts.Admin can only do so.')
+            }
+          })
+
+      }
+      else{
+        res.status(401).render('pages/login')
+      }
+    }).catch(function(error) {
+      res.status(500).send(error)
+    });
+  }else{
+    res.status(401).render('pages/login')
+  }
+}
+
 var isAuthenticated = function(req,res,next){
   //console.log(req.cookies)
   if(req.cookies.uid && req.cookies.idToken){
@@ -99,7 +128,38 @@ app.get('/login',function(req,res){
 app.get('/register',function(req,res){
   res.render('pages/register');
 })
+app.post('/activateAccount',isAuthenticatedAdmin,function(req,res,err){
+   var docref = db.collection("users").doc(req.body.email);
+   docref.get().then(function(doc){
+     if(doc.exists){
+       doc.data().acc_activated=true;
+     }
+   })
+})
 
+app.get('/activationList',function(req,res,err){
+  let userRef = db.collection('users');
+  let query = userRef.where('acc_activated', '==', false).get()
+    .then(snapshot => {
+      // if (snapshot.empty) {
+      //   console.log('No matching documents.')
+      //   return;
+      // }
+      var resData = {
+        is_success:"true",
+        activationList : []
+      }
+      snapshot.forEach(doc => {
+        resData.activationList.push(doc.data().email)
+        console.log(doc.id, '=>', doc.data());
+      });
+      res.status(200).send(resData)
+    })
+    .catch(err => {
+      console.log('Error getting documents', err);
+    });
+
+})
 app.post('/register',function(req,res,err){
   create_user(admin,req,res,err,db,XMLHttpRequest)
 })

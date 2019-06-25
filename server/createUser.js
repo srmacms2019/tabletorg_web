@@ -18,7 +18,9 @@ var create_user = function(admin,req,res,err,db,XMLHttpRequest){
         dob:"",
         profilepicurl:"",
         coverpicurl: "",
-        designation:""
+        designation:"",
+        acc_type:"user",
+        acc_activated:false
      })
      .then(function() {
        var docRef = db.collection("users").doc(userRecord.uid)
