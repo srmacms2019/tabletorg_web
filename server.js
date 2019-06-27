@@ -218,6 +218,22 @@ app.post('/createpost',isAuthenticated,function(req,res,err){
   res.send("success")
 })
 
+acms.prototype.saveMessage = function(e) {
+  e.preventDefault();
+  if(this.messageInput.value && this.checksSignedInWithMessage()){
+    var currentUser = this.auth.currentUser;
+    this.messageRef.push({
+      name: currentUser.displayName,
+      text: this.messageInput.value,
+
+    }).then(function(){
+      acms.resetMaterialTextfield(this.messageInput);
+      this.toggleButton();
+    }.bind(this)).catch(function(error) {
+      console.error('Error writing new message to  firebase databse', error);
+  });
+}
+};
 
 function loadMessages() {
   // Create the query to load the last 12 messages and listen for new ones.
