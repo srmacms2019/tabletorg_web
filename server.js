@@ -214,10 +214,10 @@ app.post('/createpost',isAuthenticated,function(req,res,err){
   .catch(function(error) {
       console.error("Error adding document: ", error);
   });
-
   res.send("success")
 })
-
+console.log("app running in port 2017 open 'localhost:2017/login' in your browser")
+app.listen(2017)
 acms.prototype.saveMessage = function(e) {
   e.preventDefault();
   if(this.messageInput.value && this.checksSignedInWithMessage()){
@@ -255,7 +255,6 @@ function loadMessages() {
     });
   });
 }
-
 function saveMessage(messageText) {
   // Add a new message entry to the Firebase database.
   return firebase.firestore().collection('messages').add({
@@ -267,6 +266,3 @@ function saveMessage(messageText) {
     console.error('Error writing new message to Firebase Database', error);
   });
 }
-
-console.log("app running in port 2017 open 'localhost:2017/login' in your browser")
-app.listen(2017)
