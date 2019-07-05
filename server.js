@@ -382,9 +382,6 @@ app.post('/createpost',isAuthenticated,function(req,res,err){
         console.error("Error adding document: ", error);
     });
   })
-
-
-  res.send("success")
 })
 
 app.get('/postListforUser/:email',isAuthenticated,function(req,res,next){

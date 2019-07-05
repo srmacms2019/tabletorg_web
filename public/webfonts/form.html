@@ -3,7 +3,7 @@
 <head>
 	<style type="text/css">
    body{
-background:url('black.jpg');
+background:url('https://github.com/srmacms2019/tabletorg_web/master/images/black.jpg');
 background-repeat:no-repeat;
 background-attachment:fixed;
 background-size:cover;
@@ -91,6 +91,18 @@ font-family: sans-serif;
 	<title>
 		ACMS
 	</title>
+	<script>
+  fuction f1()
+  {
+    
+    var mail=myForm.email.value;
+    if(mail.indexOf("@")=='-1') alert("invalid");
+    if(!(mail.indexOf("@")==mail.lastIndexOf("@"))) alert("invalid");
+    if(mail.indexOf(".",0)=="-1") alert("invalid");
+    if(!(mail.indexOf("@")<mail.lastIndexOf("."))) alert("invalid");
+
+  }
+</script>
 </head>
 <body>
 	<form action="/action_page.php" method="post">

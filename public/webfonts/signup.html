@@ -3,7 +3,7 @@
 <head>
 	<style type="text/css">
    body{
-background:url('black.jpg');
+background:url('https://github.com/srmacms2019/tabletorg_web/master/images/black.jpg');
 background-repeat:no-repeat;
 background-attachment:fixed;
 background-size:cover;
@@ -91,9 +91,33 @@ font-family: sans-serif;
 	<title>
 		ACMS
 	</title>
+
+	 <script>
+  fuction f1()
+  {
+    var name=myForm.fname.value;
+    for(var i=0;i<=name.length;i++)
+    {
+      if((name.charAt(i)>="a"&& name.charAt(i)<="z")||(name.charAt(i)>="A"&& name.charAt(i)<="Z"))
+        {
+          alert("Invalid");
+          break; 
+        }
+    }
+    var mail=myForm.email.value;
+    if(mail.indexOf("@")=='-1') alert("invalid");
+    if(!(mail.indexOf("@")==mail.lastIndexOf("@"))) alert("invalid");
+    if(mail.indexOf(".",0)=="-1") alert("invalid");
+    if(!(mail.indexOf("@")<mail.lastIndexOf("."))) alert("invalid");
+
+    var num=myForm.pnum.value;
+    if(num>9999999999 && num<1000000000) alert("invalid");
+
+  }
+</script>
 </head>
 <body>
-	<form action="/action_page.php" method="post">
+	<form action="/action_page.php" method="post" name="myForm">
 	
 <center>
   
@@ -110,19 +134,19 @@ font-family: sans-serif;
   <div class="textbox">  
   	<b>
   Name:<br> </b>
-  <input type="text" name="name" required>
+  <input type="text" name="fname" required>
   <br><br><b>
   Email-id:<br> </b>
   <input type="text" name="email" required>
   <br><br><b>
   Phone number:<br> </b>
-  <input type="text" name="phone" required>
+  <input type="text" name="pnum" required>
   <br><br><b>
   Password:<br></b>
   <input type="password" name="password" required>
   <br><br></div>
   
-  <button class="button button1">Create</button>
+  <button class="button button1" onclick="f1()">Create</button>
   <button class="button button2" type="Reset">Reset</button>
 </div>
 </center>
