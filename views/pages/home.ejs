@@ -14,28 +14,34 @@
     <div class="col s12 m4 l3 user-section">
       <div class="row">
         <div class="col s12 center-align">
-          <img class="responsive-img circle z-depth-5" width="200" src="images/nithika.png" alt="">
+          <img class="responsive-img circle z-depth-5" width="200" src="<%=user.profilepicurl%>" alt="">
           <br>
         </div>
       </div>
       <div class="row mt-5">
         <div class="col s6 center-align">
           <h6>Followers</h6>
-          <h5 class="m-1"><a href="#">540</a></h5>
+          <h5 class="m-1"><a href="#"><%=user.followers.length%></a></h5>
         </div>
         <div class="col s6 center-align">
           <h6>Following</h6>
-          <h5 class="m-1"><a href="#">128</a></h5>
+          <h5 class="m-1"><a href="#"><%=user.following.length%></a></h5>
         </div>
       </div>
       <br></br>
       <hr>
       <div class="row mt-5">
         <div class="col s12">
-          <h2 style="color:#173c54;font-weight:bold">Contact pnithika</h2>
-          <p class="latest-update mt-4">email - pnithika@amazon.com</p>
-          <p class="latest-update mt-2">chime - pnithika</p>
-          <p class="latest-update mt-2">Team - Alexa Identity Team</p>
+          <h2 style="color:#173c54;font-weight:bold">Wish me on <%=user.dob%></h2>
+        </div>
+      </div>
+      <hr>
+      <div class="row mt-5">
+        <div class="col s12">
+          <h2 style="color:#173c54;font-weight:bold">Contact <%=user.username%></h2>
+          <p class="latest-update mt-4">email - <%=user.email%></p>
+          <p class="latest-update mt-2">chime - <%=user.username%></p>
+          <p class="latest-update mt-2">Team -<%=user.team%></p>
 
         </div>
       </div>
@@ -45,7 +51,7 @@
     <div class="col s12 m8 l6 mt-1">
       <div class="row">
         <div class="card user-card-negative-margin z-depth-0" id="feed">
-          <div class="card-content card-border-gray">
+          <div  class="card-content card-border-gray">
               <div id="tweet-input-out">
                 <div class="row">
                   <div class="center mb-2">
@@ -60,6 +66,10 @@
                       <div class="input-field col s12" id="tweet-input">
                         <textarea id="post-text" class="materialize-textarea"></textarea>
                         <label for="post-text">Share Your Thoughts</label>
+                      </div>
+                      <div class="input-field col s12">
+                        <input id="post-tag" type="text">
+                        <label for="post-tag">Add #tag to ypur post</label>
                       </div>
                       <div class="row">
                       <div class="avatar-upload col s12 m6 center-align">
@@ -96,116 +106,7 @@
               </div>
               </div>
               </div>
-            <hr class="mt-3">
-            <div class="row mt-2">
-              <div class="col s1 pr-0 circle">
-                <a href="#"><img class="responsive-img circle" src="images/nithika.png" alt=""></a>
-              </div>
-              <div class="col s11">
-                <a href="#">
-                  <p class="m-1">Nithika Palanisamy<span class="ml-2"> <a href="#" style="font-size:12px;color:#767a82;"> - 6 hrs ago</a> </span></p></p>
-                </a>
-                <div class="row">
-                  <div class="col s12">
-                    <div class="card card-border z-depth-2">
-                      <div class="card-image">
-                        <img src="images/post1.jpg" alt="">
-                      </div>
-                      <div class="card-content mt-3">
-                        <h6 class="font-weight-900 text-uppercase"><a href="#">PIZZA PARTY</a></h6>
-                        <div class="mt-1">Got a break? Come have pizza at room no. 120 (12:30 PM to 2:PM - 22/02/2019) </div>
-                      </div>
-                    </div>
-                    <div class="social-icon">
-                      <span><i class="material-icons vertical-align-bottom mr-1">favorite_border</i>90</span> <i class="material-icons vertical-align-bottom ml-3 mr-1">chat_bubble_outline</i>
-                      15 <span><i class="material-icons vertical-align-bottom ml-3 mr-1">redo</i> 6</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <hr class="mt-3">
-            <div class="row mt-2">
-              <div class="col s1 pr-0 circle">
-                <a href="#"><img class="responsive-img circle" src="images/7.jpg" alt=""></a>
-              </div>
-              <div class="col s11">
-                <a href="#">
-                  <p class="m-1">Suganthi K<span class="ml-2"> <a href="#" style="font-size:12px;color:#767a82;"> - 21 hrs ago</a> </span></p>
-                </a>
-                <div class="row">
-                  <div class="col s12">
-                    <div class="card card-border z-depth-2">
-                      <div class="card-image">
-                        <img src="images/yoga.jpg" alt="">
-                      </div>
-                      <div class="card-content mt-3">
-                        <h6 class="font-weight-900 text-uppercase"><a href="#">#YOGA #MEDITATION</a></h6>
-                        <div class="mt-1">Meditation heals our Stress</div>
-                      </div>
-                    </div>
-                    <div class="social-icon">
-                      <span><i class="material-icons vertical-align-bottom mr-1">favorite_border</i>90</span> <i class="material-icons vertical-align-bottom ml-3 mr-1">chat_bubble_outline</i>
-                      15 <span><i class="material-icons vertical-align-bottom ml-3 mr-1">redo</i> 6</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <hr class="mt-3">
-
-              <!-- <div class="col s11 card-width ml-3">
-                    <div class="card-panel border-radius-6 mt-10 card-animation-1">
-                          <img class="responsive-img border-radius-8 z-depth-4 image-n-margin" src="images/post1.jpg"
-                                alt="" />
-                          <h6><a href="#" class="mt-5">PIZZA PARTY</a></h6>
-                          <p>Got a break? Come have pizza at room no. 120 (12:30 PM to 2:PM - 22/02/2019) </p>
-                          <div class="row mt-4">
-                                <div class="col s2">
-                                      <a href="#"><img src="images/nithika.png" alt="" width="60" alt="fashion" class="circle responsive-img mr-3" /></a>
-                                </div>
-                                <a class="col s5" href="#">
-                                      <p class="m-0">Nithika Palanisamy</p>
-                                      <p><i class="material-icons vertical-align-bottom">access_time</i> 1 day</p>
-                                </a>
-                                <div class="col s5 mt-1 right-align" style="float:right">
-                                      <a href="#"><span class="material-icons">favorite_border</span></a>
-                                      <span class="ml-3 vertical-align-top">340</span>
-                                      <a href="#"><span class="material-icons ml-10">chat_bubble_outline</span></a>
-                                      <span class="ml-3 vertical-align-top">80</span>
-                                </div>
-                          </div>
-                    </div>
-              </div>
-            </div> -->
-            <div class="row mt-2">
-              <div class="col s1 pr-0 circle">
-                <a href="#"><img class="responsive-img circle" src="images/4.jpg" alt=""></a>
-              </div>
-              <div class="col s11">
-                <a href="#">
-                  <p class="m-0">Aadhil <span class="ml-2"> <a href="#" style="font-size:12px;color:#767a82;"> - 6 hrs ago</a> </span></p>
-                </a>
-                <div class="row">
-                  <div class="col s12">
-                    <div class="card card-border z-depth-2">
-                      <div class="card-image">
-                        <img src="images/cat.jpg" alt="">
-                      </div>
-                      <div class="card-content mt-3">
-                        <h6 class="font-weight-900 text-uppercase"><a href="#">#cat #pet</a></h6>
-                        <div class="mt-1">Hello from my new pet</div>
-                      </div>
-                    </div>
-                    <div class="social-icon">
-                      <span><i class="material-icons vertical-align-bottom mr-1">favorite_border</i>90</span> <i class="material-icons vertical-align-bottom ml-3 mr-1">chat_bubble_outline</i>
-                      15 <span><i class="material-icons vertical-align-bottom ml-3 mr-1">redo</i> 6</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <hr class="mt-3">
+              <div id="post-container"></div>
 
           </div>
         </div>
@@ -222,7 +123,7 @@
                  <div class="row">
                    <div class="col s8">
                       <img src="images/1.jpg" alt="" class="circle">
-                      <p class="font-weight-600">John Doe</p>
+                      <p class="font-weight-600">random user</p>
                       <p class="medium-small">designation</p>
                     </div>
                     <div class="col s3 center-align mr-2"><a class="btn-floating mb-1 btn-medium waves-effect waves-light "><i class="material-icons">add</i></a></div>
@@ -233,7 +134,7 @@
                  <div class="row">
                    <div class="col s8">
                       <img src="images/1.jpg" alt="" class="circle">
-                      <p class="font-weight-600">John Doe</p>
+                      <p class="font-weight-600">random user</p>
                       <p class="medium-small">designation</p>
                     </div>
                     <div class="col s3 center-align mr-2"><a class="btn-floating mb-1 btn-medium waves-effect waves-light "><i class="material-icons">add</i></a></div>
@@ -244,7 +145,7 @@
                  <div class="row">
                    <div class="col s8">
                       <img src="images/1.jpg" alt="" class="circle">
-                      <p class="font-weight-600">John Doe</p>
+                      <p class="font-weight-600">random user</p>
                       <p class="medium-small">designation</p>
                     </div>
                     <div class="col s3 center-align mr-2"><a class="btn-floating mb-1 btn-medium waves-effect waves-light "><i class="material-icons">add</i></a></div>
@@ -255,7 +156,7 @@
                  <div class="row">
                    <div class="col s8">
                       <img src="images/1.jpg" alt="" class="circle">
-                      <p class="font-weight-600">John Doe</p>
+                      <p class="font-weight-600">random user</p>
                       <p class="medium-small">designation</p>
                     </div>
                     <div class="col s3 center-align mr-2"><a class="btn-floating mb-1 btn-medium waves-effect waves-light "><i class="material-icons">add</i></a></div>
@@ -266,7 +167,7 @@
                  <div class="row">
                    <div class="col s8">
                       <img src="images/1.jpg" alt="" class="circle">
-                      <p class="font-weight-600">John Doe</p>
+                      <p class="font-weight-600">random user</p>
                       <p class="medium-small">designation</p>
                     </div>
                     <div class="col s3 center-align mr-2"><a class="btn-floating mb-1 btn-medium waves-effect waves-light "><i class="material-icons">add</i></a></div>

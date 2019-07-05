@@ -19,6 +19,7 @@ $( document ).ready(function() {
             'name':name,
             'email':email,
             'password':pass1,
+            'type':"admin"
           },
           xhrFields: {
             withCredentials: true

@@ -100,27 +100,53 @@
         })
 
         $("#login-btn").click(function(){
-            console.log("hi")
+
             var email = $("#email").val()
             var password = $("#password").val()
             auth.signInWithEmailAndPassword(email,password)
 
              .then(function(firebaseUser) {
                  console.log("success "+ firebaseUser.user.uid)
-                  
-                 document.cookie = "uid="+firebaseUser.user.uid;
-                 auth.currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
-                   console.log(idToken)
-                   document.cookie = "idToken="+idToken;
-                   window.location.href='http://localhost:2017/home'
-                  }).catch(function(error) {
-                    console.log("error "+error)
-                  });
+                 $.ajax({
+
+                 url: 'http://localhost:2017/checkLogin',
+                 type: 'POST',
+                 crossDomain: true,
+                 data:{
+                   'uid':firebaseUser.user.uid
+                 },
+                 xhrFields: {
+                   withCredentials: true
+                 },
+                 success: function(data){
+                   //alert(data.users.length);
+                   console.log("success");
+                   console.log(data)
+                   if(data.is_success=="true" && data.message=="user can login"){
+                     document.cookie = "uid="+firebaseUser.user.uid;
+                     auth.currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
+                       console.log(idToken)
+                       document.cookie = "idToken="+idToken;
+                       window.location.href='http://localhost:2017/home'
+                      }).catch(function(error) {
+                        console.log("error "+error)
+                      });
+
+                   }else{
+                     alert(data.message);
+                   }
+                   //window.location.href="http://localhost:2017/home"
+                 },
+                 error: function(jqXHR, error) {
+                   alert(jqXHR.status + "   " + JSON.stringify(jqXHR.responseText));
+                 }
+               });
+
 
 
              })
             .catch(function(error) {
-                 console.log("error "+ error)
+                 alert(error)
             });
 
         })

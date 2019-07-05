@@ -29,6 +29,7 @@ $(document).ready(function(){
     name=$('#name').val()
     username=$('#username').val()
     dob=$('#dob').val()
+    team = $('#team').val()
     designation=jobrole[$('#designation').val()-1]
     $.ajax({
 
@@ -39,7 +40,8 @@ $(document).ready(function(){
         'name':name,
         'username':username,
         'dob' : dob,
-        'designation':designation
+        'designation':designation,
+        'team':team
       },
       xhrFields: {
         withCredentials: true
